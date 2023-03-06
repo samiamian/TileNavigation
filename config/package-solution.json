@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "tile-nav-client-side-solution",
+    "id": "df912dab-f953-44d1-8a50-4298722668bf",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.14.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "tile-nav description"
+      },
+      "longDescription": {
+        "default": "tile-nav description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "tile-nav Feature",
+        "description": "The feature that activates elements of the tile-nav solution.",
+        "id": "da5b9c2c-c71e-43d4-9efd-786bf080a586",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/tile-nav.sppkg"
+  }
+}

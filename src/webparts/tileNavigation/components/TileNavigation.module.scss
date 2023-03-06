@@ -1,0 +1,83 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+body {
+  font: normal 1em/1 sans-serif;
+}
+
+.flexContainer{
+  display: flex;
+  flex-wrap: wrap;
+  height: 100px;
+  width:100%;
+  align-items: left;
+  justify-content: left;
+}
+
+.navitem {
+  display: flex;
+  height: 98%;
+  border-style: solid;
+  border-width: thin;
+}
+
+.overlay {
+  height: 50px;
+  width:100%;
+  opacity: 0.9;
+}
+
+.overlay:hover{
+  transition: all .4s;
+  height: 70px;
+  width:100%;
+  opacity: 0.9;
+}
+
+div.navitem a, div.navitem a:visited, div.navitem a:active, div.navitem a:link {
+  margin-top:20px;
+  display: inline-block;
+  width: auto;
+  padding:10px;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.centerText{
+  display: flex;
+  margin:auto;
+}
+
+.tileNavigation {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+// .welcome {
+//   text-align: center;
+// }
+
+// .welcomeImage {
+//   width: 100%;
+//   max-width: 420px;
+// }
+
+// .links {
+//   a {
+//     text-decoration: none;
+//     color: "[theme:link, default:#03787c]";
+//     color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+//     &:hover {
+//       text-decoration: underline;
+//       color: "[theme:linkHovered, default: #014446]";
+//       color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+//     }
+//   }
+// }

@@ -33,6 +33,20 @@ body {
   opacity: 0.9;
 }
 
+.noAnimationOverlay{
+  height: 50px;
+  width:100%;
+  opacity: 0.9;
+}
+
+.noAnimationOverlay:hover{
+  height: 50px;
+  width: 100%;
+  opacity: 0.9;
+}
+
+
+
 div.navitem a, div.navitem a:visited, div.navitem a:active, div.navitem a:link {
   margin-top:20px;
   display: inline-block;

@@ -27,23 +27,31 @@ export default class TileNavigation extends React.Component<ITileNavigationProps
     };
   }
 public componentDidMount(): void {
-  this.setState({
-    tileColor: tcs.Lighten(this.props.color)
-  })
-  tcs.getListDate(this.props.context,this.props.listName).then((response) => {
-    if (!response ){
-      console.log("response is null");
-      this.setState({
-        listNotFound: true,
+  if(this.props.color){
+    this.setState({
+      tileColor: tcs.Lighten(this.props.color)
+    })
+  }
+  if(this.props.listName){
+      tcs.getListDate(this.props.context,this.props.listName).then((response) => {
+        if (!response ){
+          this.setState({
+            listNotFound: true,
+          });
+        }
+        else{
+          this.setState({
+            listData: response,
+            listNotFound: false,
+          });
+        }
       });
     }
     else{
       this.setState({
-        listData: response,
-        listNotFound: false,
+        listNotFound: true,
       });
     }
-  });
 }
 
 public componentDidUpdate(prevProps){
@@ -51,21 +59,22 @@ public componentDidUpdate(prevProps){
       this.setState({          
           tileColor: tcs.Lighten(this.props.color)
       });
-  }//response === undefined || response.length == 0 
-  if(!this.state.listNotFound ){
-    this.setState({
-      listNotFound: true,
-    });
   }
 }
 
   public render(): React.ReactElement<ITileNavigationProps> {
-    console.log(this.state.listNotFound);
     return (
       <div className={styles.flexContainer}>
-          {!this.state.listNotFound && this.state.listData.map(data =>
+          {!this.state.listNotFound && this.props.tileAnimation && this.state.listData.map(data =>
             <div className={styles.navitem} style={{backgroundColor: `${this.state.tileColor}`,width: `${this.props.setWidth}`}}>
               <div className={styles.overlay} style={{backgroundColor: `${this.props.color}`}}>
+                  <a href={data.url} >{escape(data.title)}</a>
+              </div>
+            </div>
+          )}
+          {!this.state.listNotFound && !this.props.tileAnimation && this.state.listData.map(data =>
+            <div className={styles.navitem} style={{backgroundColor: `${this.state.tileColor}`,width: `${this.props.setWidth}`}}>
+              <div className={styles.noAnimationOverlay} style={{backgroundColor: `${this.props.color}`}}>
                   <a href={data.url} >{escape(data.title)}</a>
               </div>
             </div>

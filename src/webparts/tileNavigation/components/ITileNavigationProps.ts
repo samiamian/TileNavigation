@@ -9,5 +9,6 @@ export interface ITileNavigationProps {
   color: string;
   setWidth: string;
   listName: string;
+  tileAnimation: boolean;
   context: WebPartContext; 
 }

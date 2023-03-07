@@ -20,7 +20,8 @@ export class tileService {
      * @returns 
      */
     public async getSiteLists(context: WebPartContext): Promise <IPromotedListLists[]> {
-        let siteLists = new Array<IPromotedListLists>();
+        //var siteLists = new Array<IPromotedListLists>();
+        var siteLists: IPromotedListLists[] = [];
         const absoluteURL: string = context.pageContext.web.absoluteUrl;
         const LIST_OF_SITES = "/_api/web/lists?$filter=BaseTemplate%20eq%20100&$select=Title&$orderby=Title&$top=10";
         const endPointUrl: string = absoluteURL.concat(LIST_OF_SITES);       
@@ -30,15 +31,12 @@ export class tileService {
 
         let [jsonData, jsonDataErr] = await this.handle(data.json());
         if(jsonDataErr) throw new Error('Could not get List Details JSON Data');
-
+        
         if (jsonData !== undefined){
             jsonData.value.map(respItem => {  
-                if(respItem["Title"] !== undefined){
+                if(respItem["Title"] !== undefined){//promoted
                  if (respItem["Title"].toLowerCase().includes("promoted")){
                     siteLists.push({key:respItem["Title"],  text:respItem["Title"]});
-                 }
-                 else{
-                    siteLists = null;
                  }
                 }
             });
@@ -46,7 +44,6 @@ export class tileService {
         console.log(siteLists);
         return siteLists;
     }
-
     /**
      * 
      * @param context 
@@ -76,6 +73,7 @@ export class tileService {
                 }
             });
         };
+        
         return listData;
 
     }

@@ -3,6 +3,7 @@ declare interface ITileNavigationWebPartStrings {
   listNameFieldLabel: string;
   PropertyPaneDescription: string;
   ColorFieldLabel: string;
+  TileAnimationFieldLabel: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
   AppLocalEnvironmentSharePoint: string;

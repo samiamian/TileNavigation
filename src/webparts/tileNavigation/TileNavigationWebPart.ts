@@ -4,7 +4,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
   PropertyPaneDropdown,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -14,7 +15,6 @@ import TileNavigation from './components/TileNavigation';
 import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 
 import { ITileNavigationProps } from './components/ITileNavigationProps';
-import { ITileNavigationStates } from './components/ITileNavigationStates';
 import { IPromotedListLists } from "../model/dataTypes";
 
 import tcs from '../services/tileService';
@@ -23,7 +23,7 @@ import tcs from '../services/tileService';
 export default class TileNavigationWebPart extends BaseClientSideWebPart<ITileNavigationProps> {
 
   private siteLists: IPromotedListLists[];
-  private siteListsLoaded: boolean;
+  private siteListsLoaded: boolean = false;
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
@@ -46,6 +46,7 @@ export default class TileNavigationWebPart extends BaseClientSideWebPart<ITileNa
         color: this.properties.color,
         setWidth: this.properties.setWidth,
         listName: this.properties.listName,
+        tileAnimation: this.properties.tileAnimation,
         context: this.context
       }
     );
@@ -127,6 +128,7 @@ export default class TileNavigationWebPart extends BaseClientSideWebPart<ITileNa
                 }),
                 PropertyPaneDropdown('setWidth', {
                   label: "Tile Width - desktop view only",
+                  selectedKey: '151px',
                   options: [
                     { key: '151px', text: '151px' },
                     { key: '49.5%', text: '50% - 2 in a row' },
@@ -134,6 +136,11 @@ export default class TileNavigationWebPart extends BaseClientSideWebPart<ITileNa
                     { key: '24.5%', text: '25% - 4 in a row' },
                     { key: '19.5%', text: '20% - 5 in a row' }
                   ]
+                }),
+                PropertyPaneToggle('tileAnimation', {
+                  label: strings.TileAnimationFieldLabel,
+                  onText: 'On',
+                  offText: 'Off'
                 }),
               ]
             }

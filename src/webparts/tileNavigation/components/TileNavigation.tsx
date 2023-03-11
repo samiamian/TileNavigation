@@ -22,7 +22,7 @@ export default class TileNavigation extends React.Component<ITileNavigationProps
     super(props);
     this.state = {
       listData: [],
-      tileColor:'',
+      tileColor:'#a34141',
       listNotFound: false,
     };
   }
@@ -80,7 +80,7 @@ public componentDidUpdate(prevProps){
             </div>
           )}
           {
-            this.state.listNotFound && <><Icon iconName="ChromeClose" className={icon}/><div className={icon}>Promoted List Not Found In Current Site.</div></>
+            this.state.listNotFound && <><Icon iconName="ChromeClose" className={icon}/><div className={icon}>Please Select A Valid Promoted List In The Properties Pane.</div></>
           }
       </div>
 

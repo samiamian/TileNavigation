@@ -99,7 +99,7 @@ export default class TileNavigationWebPart extends BaseClientSideWebPart<ITileNa
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: "Note: Ensure you have atleast one List Called Promoted List with 3 attributes Title, URL & Order in this site."
           },
           groups: [
             {
@@ -112,36 +112,35 @@ export default class TileNavigationWebPart extends BaseClientSideWebPart<ITileNa
                     label: strings.listNameFieldLabel,
                     options: this.siteLists
                   }),
-                ,
-                PropertyFieldColorPicker('color', {
-                  label: strings.ColorFieldLabel,
-                  selectedColor: this.properties.color,
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  properties: this.properties,
-                  disabled: false,
-                  debounce: 1000,
-                  isHidden: false,
-                  alphaSliderHidden: false,
-                  style: PropertyFieldColorPickerStyle.Full,
-                  iconName: 'Precipitation',
-                  key: 'colorFieldId'
-                }),
-                PropertyPaneDropdown('setWidth', {
-                  label: "Tile Width - desktop view only",
-                  selectedKey: '151px',
-                  options: [
-                    { key: '151px', text: '151px' },
-                    { key: '49.5%', text: '50% - 2 in a row' },
-                    { key: '32.5%', text: '33% - 3 in a row' },
-                    { key: '24.5%', text: '25% - 4 in a row' },
-                    { key: '19.5%', text: '20% - 5 in a row' }
-                  ]
-                }),
-                PropertyPaneToggle('tileAnimation', {
-                  label: strings.TileAnimationFieldLabel,
-                  onText: 'On',
-                  offText: 'Off'
-                }),
+                  PropertyFieldColorPicker('color', {
+                    label: strings.ColorFieldLabel,
+                    selectedColor: this.properties.color,
+                    onPropertyChange: this.onPropertyPaneFieldChanged,
+                    properties: this.properties,
+                    disabled: false,
+                    debounce: 1000,
+                    isHidden: false,
+                    alphaSliderHidden: true,
+                    style: PropertyFieldColorPickerStyle.Inline,
+                    iconName: 'Precipitation',
+                    key: 'colorFieldId'
+                  }),
+                  PropertyPaneDropdown('setWidth', {
+                    label: "Tile Width - desktop view only",
+                    selectedKey: '151px',
+                    options: [
+                      { key: '151px', text: '151px' },
+                      { key: '49.5%', text: '50% - 2 in a row' },
+                      { key: '32.5%', text: '33% - 3 in a row' },
+                      { key: '24.5%', text: '25% - 4 in a row' },
+                      { key: '19.5%', text: '20% - 5 in a row' }
+                    ]
+                  }),
+                  PropertyPaneToggle('tileAnimation', {
+                    label: strings.TileAnimationFieldLabel,
+                    onText: 'On',
+                    offText: 'Off'
+                  }),
               ]
             }
           ]

@@ -5,7 +5,7 @@ define([], function() {
     "ColorFieldLabel": "Color",
     "SetWidthFieldLabel": "Set Width",
     "listNameFieldLabel":"List Name",
-    "TileAnimationFieldLabel": "Enable Animation",
+    "TileAnimationFieldLabel": "Enable Tile Animation",
     "DescriptionFieldLabel": "Description Field",
     "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",
     "AppLocalEnvironmentTeams": "The app is running on your local environment as Microsoft Teams app",

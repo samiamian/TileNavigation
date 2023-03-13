@@ -34,7 +34,7 @@ export class tileService {
         
         if (jsonData !== undefined){
             jsonData.value.map(respItem => {  
-                if(respItem["Title"] !== undefined){//promoted
+                if(respItem["Title"] !== undefined){
                  if (respItem["Title"].toLowerCase().includes("promoted")){
                     siteLists.push({key:respItem["Title"],  text:respItem["Title"]});
                  }
@@ -50,7 +50,7 @@ export class tileService {
      * @param listName 
      * @returns 
      */
-    public async getListDate(context: WebPartContext,listName: string): Promise<IPromotedListData[]> {
+    public async getListData(context: WebPartContext,listName: string): Promise<IPromotedListData[]> {
         let listData = new Array<IPromotedListData>();
         const absoluteURL: string = context.pageContext.web.absoluteUrl;
         let listByTile = decodeURIComponent(listName);
@@ -59,7 +59,12 @@ export class tileService {
         
         let [data,dataerr] = await this.handle(context.spHttpClient.get(endPointUrl, SPHttpClient.configurations.v1));
         if(dataerr) throw new Error('Could not fetch List details');
+
         let [jsonData, jsonDataErr] = await this.handle(data.json());
+        console.log(jsonData.value.length);
+        if(jsonDataErr) throw new Error('Could not Get JSON Formatted List Data');
+
+        if (jsonData.value.length === 0) return null;
         if (jsonData !== undefined){
             jsonData.value.map(respItem => {  
                 if(respItem["Title"] !== undefined){
